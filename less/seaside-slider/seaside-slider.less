@@ -1,0 +1,55 @@
+@import url("../prefixed/prefixed.less");
+
+
+.seaside-slider {
+display: inline-block;
+position: relative;	
+	
+	// viewport
+	> div {
+	height: 450px;
+	overflow-x: hidden;
+	overflow-y: auto;
+	position: relative;
+	width: 900px;
+	
+		.js & {
+		overflow-y: hidden;
+		}
+	
+		// slides
+		> :first-child {
+		height: 100%;
+		position: absolute;
+		width: 100%;
+		
+			// slide		
+			> * {
+			.backface-visibility(hidden); /* prevent flickering on mobile devices */
+			height: 100%;
+			overflow: hidden;
+			text-align: center;
+			width: 100%;
+		
+				* {
+				max-height: 100%;
+				max-width: 100%;
+				}
+				
+				.js & {
+				position: absolute;
+				}
+			}
+		}
+	}
+	
+	> nav {
+	display: block;
+	height: 30px;
+	visibility: hidden;
+	
+		.js & {
+		visibility: visible;
+		}
+	}
+}

@@ -1,0 +1,18 @@
+.seaside-slider > div > :first-child > * {
+  opacity: 0;
+  visibility: hidden;
+}
+.seaside-slider > div > :first-child > *.current {
+  opacity: 1;
+  visibility: visible;
+}
+.seaside-slider > div > :first-child.transition > * {
+  -webkit-transition-duration: 1s;
+  -moz-transition-duration: 1s;
+  -o-transition-duration: 1s;
+  transition-duration: 1s;
+  -webkit-transition-property: opacity , visibility;
+  -moz-transition-property: opacity , visibility;
+  -o-transition-property: opacity , visibility;
+  transition-property: opacity , visibility;
+}

@@ -1,0 +1,121 @@
+@import url("../../prefixed/prefixed.less");
+
+
+.seaside-slider {
+background-color: #000000;
+border: #000000 solid 1px;
+.box-sizing(border-box);
+color: #FFFFFF;
+	
+	> div > :first-child > * {
+	background-color: #000000;
+	}
+	
+	&.fullscreen {
+	display: block;
+	height: 100%;
+	width: 100%;
+	
+		// viewport
+		> div {
+		height: 100%;
+		width: 100%;
+			
+			// slides
+			> :first-child {
+			height: 100%;
+			width: 100%;
+				
+				// slide
+				> * {
+				height: 100%;
+				width: 100%;
+				}
+			}
+		}
+		
+		> nav {
+		bottom: 0;
+		position: absolute;
+		
+			.next,
+			.prev {
+			display: none;
+			}
+		}
+	}
+	
+	> nav {
+	background-color: #333333;
+	display: block;
+	height: 10px;
+	text-align: center;
+	width: 100%;
+		
+		.next,
+		.prev {
+		background-color: #000000;
+		border: none;
+		color: #FFFFFF;
+		cursor: pointer;
+		display: block;
+		font-size: 20px;
+		height: 100%;
+		line-height: 1;
+		margin: 0 0 0 0; /* ? */
+		opacity: 0;
+		position: absolute;
+		top: 0;
+		.transition(0.5s);
+		visibility: hidden;
+		width: 50px;
+		}
+		
+		.next {
+		right: 0;
+		}
+		
+		ul {
+		background: #333333;
+		display: table;
+		height: 10px;
+		left: 0;
+		margin: 0;
+		padding: 0;
+		position: relative;
+		width: 100%;
+		z-index: 999;
+		
+			li {
+			cursor: pointer;
+			display: table-cell;
+			height: 100%;
+			position: relative;
+			.transition(background-color 0.25s);
+			width: 1px; /* a width for Webkit */
+				
+				&.current {
+				cursor: default;
+				}
+				
+				&.current,
+				&:hover {
+				background-color: #FFFFFF;
+				}
+			}
+		}
+	}
+	
+	.no-touch &&:focus,
+	.no-touch &&:hover {
+		
+		.prev,
+		.next {
+			
+			&:not([disabled]) {
+			opacity: 1;
+			visibility: visible;
+			}
+		}
+	}
+}

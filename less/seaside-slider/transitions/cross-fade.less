@@ -1,0 +1,26 @@
+@import url("../../prefixed/prefixed.less");
+
+
+.seaside-slider {
+
+	> div {
+	
+		> :first-child {
+		
+			> * {
+			opacity: 0;
+			visibility: hidden;
+			
+				&.current {
+				opacity: 1;
+				visibility: visible;
+				}
+			}
+			
+			&.transition > * {
+			.transition-duration(1s);
+			.transition-property(opacity~',' visibility);
+			}
+		}
+	}
+}

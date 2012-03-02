@@ -1,0 +1,1 @@
+<img alt="" src="http://lorempixel.com/1000/<?php echo mt_rand(5, 9) . mt_rand(1, 9) . mt_rand(1, 9); ?>" />

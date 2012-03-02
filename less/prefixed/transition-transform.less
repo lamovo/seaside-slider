@@ -1,0 +1,15 @@
+.transition-transform(@transition) {
+-webkit-transition: -webkit-transform @transition;
+   -moz-transition: -moz-transform @transition;
+    -ms-transition: -ms-transform @transition;
+     -o-transition: -o-transform @transition;
+        transition: transform @transition;
+}
+
+.transition-property-transform(@transition-property) {
+-webkit-transition-property: -webkit-transform, @transition-property;
+   -moz-transition-property: -moz-transform, @transition-property;
+    -ms-transition-property: -ms-transform, @transition-property;
+     -o-transition-property: -o-transform, @transition-property;
+        transition-property: transform, @transition-property;
+}

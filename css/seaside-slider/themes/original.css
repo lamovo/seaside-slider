@@ -1,0 +1,223 @@
+.seaside-slider {
+  background-color: #1C1C1C;
+  border: 1px solid #000000;
+  color: #FFFFFF;
+}
+.seaside-slider > div {
+  background-color: #111111;
+}
+.seaside-slider > div > :first-child > section {
+  background-color: #111111;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.seaside-slider.full-width {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 100%;
+}
+.seaside-slider > nav {
+  height: 30px;
+  overflow: hidden;
+  position: relative;
+  text-align: center;
+}
+.seaside-slider > nav .next,
+.seaside-slider > nav .prev {
+  background: none;
+  border: 8px solid transparent;
+  cursor: pointer;
+  display: block;
+  height: 0;
+  margin: 7px 0 0 0;
+  padding: 0;
+  position: absolute;
+  top: 0;
+  width: 0;
+}
+.seaside-slider > nav .next:before,
+.seaside-slider > nav .prev:before {
+  content: "";
+  display: block;
+  height: 30px;
+  position: absolute;
+  top: -14px;
+  width: 40px;
+}
+.seaside-slider > nav .next[disabled],
+.seaside-slider > nav .prev[disabled] {
+  cursor: default;
+}
+.seaside-slider > nav .next {
+  border-left-color: #FFFFFF;
+  right: 3px;
+}
+.seaside-slider > nav .next[disabled] {
+  border-left-color: #2D2D2D;
+}
+.seaside-slider > nav .prev {
+  border-right-color: #FFFFFF;
+  left: 3px;
+}
+.seaside-slider > nav .prev[disabled] {
+  border-right-color: #2D2D2D;
+}
+.seaside-slider > nav ul {
+  display: inline-block;
+  height: 30px;
+  margin: 0;
+  padding: 0;
+}
+.seaside-slider > nav ul li {
+  background-color: #2D2D2D;
+  cursor: pointer;
+  display: inline-block;
+  height: 4px;
+  margin: 14px 0 0 0;
+  position: relative;
+  -webkit-transition: background-color 0.3s;
+  -moz-transition: background-color 0.3s;
+  -o-transition: background-color 0.3s;
+  transition: background-color 0.3s;
+  vertical-align: top;
+  width: 16px;
+  z-index: 99;
+}
+.seaside-slider > nav ul li:before {
+  content: "";
+  display: block;
+  height: 30px;
+  margin: -14px 0 0 0;
+  width: 100%;
+}
+.seaside-slider > nav ul li.current {
+  background-color: #FFFFFF;
+  border-radius: 5px;
+  cursor: default;
+  -webkit-transform: rotate(-90deg);
+  -moz-transform: rotate(-90deg);
+  -ms-transform: rotate(-90deg);
+  -o-transform: rotate(-90deg);
+  transform: rotate(-90deg);
+  -webkit-transition: 0.5s;
+  -moz-transition: 0.5s;
+  -o-transition: 0.5s;
+  transition: 0.5s;
+  z-index: 0;
+}
+.seaside-slider > nav ul li:first-child {
+  border-bottom-left-radius: 5px;
+  border-top-left-radius: 5px;
+}
+.seaside-slider > nav ul li:last-child {
+  border-bottom-right-radius: 5px;
+  border-top-right-radius: 5px;
+}
+.seaside-slider > nav ul li + li {
+  margin-left: 1px;
+}
+.seaside-slider.slide-direction-left > nav ul li.current {
+  -webkit-transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  -o-transform: rotate(90deg);
+  transform: rotate(90deg);
+}
+/*
+Fullscreen
+---------------------------------------------------------------------------------------------------- */
+.seaside-slider.fullscreen {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+.seaside-slider.fullscreen > div {
+  height: 100%;
+  width: 100%;
+}
+.seaside-slider.fullscreen > div > :first-child {
+  height: 100%;
+  width: 100%;
+}
+.seaside-slider.fullscreen > div > :first-child > * {
+  height: 100%;
+  width: 100%;
+}
+.seaside-slider.fullscreen > nav {
+  bottom: 0;
+  opacity: 0;
+  padding: 0 0 10px 0;
+  position: absolute;
+  -webkit-transition: opacity 1.5s 2s ease-in-out;
+  -moz-transition: opacity 1.5s 2s ease-in-out;
+  -o-transition: opacity 1.5s 2s ease-in-out;
+  transition: opacity 1.5s 2s ease-in-out;
+  width: 100%;
+}
+.seaside-slider.fullscreen > nav:focus,
+.seaside-slider.fullscreen > nav:hover {
+  opacity: 1;
+  -webkit-transition: opacity 0.5s ease-in-out;
+  -moz-transition: opacity 0.5s ease-in-out;
+  -o-transition: opacity 0.5s ease-in-out;
+  transition: opacity 0.5s ease-in-out;
+}
+/*
+Captions
+---------------------------------------------------------------------------------------------------- */
+.seaside-slider > div > :first-child > * > figure {
+  display: inline-block;
+  margin: 0;
+  overflow: hidden;
+  position: relative;
+}
+.seaside-slider > div > :first-child > * > figure a img {
+  border: none;
+}
+.seaside-slider > div > :first-child > * > figure figcaption {
+  background-color: #000000;
+  background-color: rgba(0, 0, 0, 0.7);
+  border-top: 1px solid #000000;
+  bottom: 0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  overflow: hidden;
+  padding: 5px 10px;
+  position: absolute;
+  text-align: center;
+  -webkit-transition: 0.3s ease-in-out;
+  -moz-transition: 0.3s ease-in-out;
+  -o-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
+  width: 100%;
+  opacity: 0;
+  -webkit-transform: translatey(100%);
+  -moz-transform: translatey(100%);
+  -ms-transform: translatey(100%);
+  -o-transform: translatey(100%);
+  transform: translatey(100%);
+}
+.seaside-slider > div > :first-child > * > figure img,
+.seaside-slider > div > :first-child > * > figure video {
+  display: block;
+  position: relative;
+}
+html:not(.js) .seaside-slider section > figure figcaption,
+.seaside-slider section.current > figure figcaption {
+  opacity: 1;
+  -webkit-transform: none;
+  -moz-transform: none;
+  -ms-transform: none;
+  -o-transform: none;
+  transform: none;
+  -webkit-transition: 0.7s ease-in-out;
+  -moz-transition: 0.7s ease-in-out;
+  -o-transition: 0.7s ease-in-out;
+  transition: 0.7s ease-in-out;
+}

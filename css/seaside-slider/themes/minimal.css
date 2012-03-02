@@ -1,0 +1,107 @@
+.seaside-slider {
+  background-color: #000000;
+  border: #000000 solid 1px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  color: #FFFFFF;
+}
+.seaside-slider > div > :first-child > * {
+  background-color: #000000;
+}
+.seaside-slider.fullscreen {
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+.seaside-slider.fullscreen > div {
+  height: 100%;
+  width: 100%;
+}
+.seaside-slider.fullscreen > div > :first-child {
+  height: 100%;
+  width: 100%;
+}
+.seaside-slider.fullscreen > div > :first-child > * {
+  height: 100%;
+  width: 100%;
+}
+.seaside-slider.fullscreen > nav {
+  bottom: 0;
+  position: absolute;
+}
+.seaside-slider.fullscreen > nav .next,
+.seaside-slider.fullscreen > nav .prev {
+  display: none;
+}
+.seaside-slider > nav {
+  background-color: #333333;
+  display: block;
+  height: 10px;
+  text-align: center;
+  width: 100%;
+}
+.seaside-slider > nav .next,
+.seaside-slider > nav .prev {
+  background-color: #000000;
+  border: none;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: block;
+  font-size: 20px;
+  height: 100%;
+  line-height: 1;
+  margin: 0 0 0 0;
+  /* ? */
+
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  -webkit-transition: 0.5s;
+  -moz-transition: 0.5s;
+  -o-transition: 0.5s;
+  transition: 0.5s;
+  visibility: hidden;
+  width: 50px;
+}
+.seaside-slider > nav .next {
+  right: 0;
+}
+.seaside-slider > nav ul {
+  background: #333333;
+  display: table;
+  height: 10px;
+  left: 0;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  width: 100%;
+  z-index: 999;
+}
+.seaside-slider > nav ul li {
+  cursor: pointer;
+  display: table-cell;
+  height: 100%;
+  position: relative;
+  -webkit-transition: background-color 0.25s;
+  -moz-transition: background-color 0.25s;
+  -o-transition: background-color 0.25s;
+  transition: background-color 0.25s;
+  width: 1px;
+  /* a width for Webkit */
+
+}
+.seaside-slider > nav ul li.current {
+  cursor: default;
+}
+.seaside-slider > nav ul li.current,
+.seaside-slider > nav ul li:hover {
+  background-color: #FFFFFF;
+}
+.no-touch .seaside-slider:focus .prev:not([disabled]),
+.no-touch .seaside-slider:hover .prev:not([disabled]),
+.no-touch .seaside-slider:focus .next:not([disabled]),
+.no-touch .seaside-slider:hover .next:not([disabled]) {
+  opacity: 1;
+  visibility: visible;
+}

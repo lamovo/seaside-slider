@@ -1,0 +1,18 @@
+@import url("../../prefixed/prefixed.less");
+@import url("../../prefixed/transition-transform.less");
+
+
+.seaside-slider {
+
+	> div {
+	
+		> :first-child.transition {
+		.transition-transform(0.4s ease-in-out);
+			
+				.touch & {
+				.transition-transform(0.25s ease-in-out);
+				}
+			}
+		}
+	}
+}
