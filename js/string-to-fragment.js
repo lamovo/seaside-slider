@@ -3,7 +3,7 @@ define(function() {
 	
 return function(string) {
 	
-	if(typeof Range.prototype.createContextualFragment === 'function') {
+	if(typeof Range === 'object' && typeof Range.prototype.createContextualFragment === 'function') {
 		
 		// try for Webkit which throws "Uncaught Error: NOT_SUPPORTED_ERR: DOM Exception 9"
 		try {

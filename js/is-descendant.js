@@ -8,7 +8,7 @@ return function(ancestor, descendant) {
 	if(!hasId) descendant.setAttribute('id', 'temp' + +new Date());
 	
 	// query the id against the ancestor
-	var result = ancestor.getElementById(descendant.getAttribute('id'));
+	var result = ancestor.querySelector('#' + descendant.getAttribute('id'));
 	
 	// remove temporary id
 	if(!hasId) descendant.removeAttribute('id');
