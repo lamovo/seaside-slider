@@ -4,7 +4,7 @@ return function(carousel) {
 	
 	var self = {
 			gutter: 20,
-			transform:					Modernizr && Modernizr.csstransforms,
+			transform:					Modernizr && Modernizr.csstransforms && Modernizr.touch, // use CSS3 transforms only on touch devices where Flash isn't supported because http://dropshado.ws/post/4085720152/css-transforms-breaking-flash
 			transformPropertyName:		Modernizr && Modernizr.prefixed('transform'),
 		},
 		

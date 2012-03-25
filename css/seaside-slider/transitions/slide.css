@@ -1,9 +1,8 @@
 .seaside-slider > div > :first-child.transition {
-  -webkit-transition: -webkit-transform 0.4s ease-in-out;
-  -moz-transition: -moz-transform 0.4s ease-in-out;
-  -ms-transition: -ms-transform 0.4s ease-in-out;
-  -o-transition: -o-transform 0.4s ease-in-out;
-  transition: transform 0.4s ease-in-out;
+  -webkit-transition: margin-left 0.4s ease-in-out;
+  -moz-transition: margin-left 0.4s ease-in-out;
+  -o-transition: margin-left 0.4s ease-in-out;
+  transition: margin-left 0.4s ease-in-out;
 }
 .touch .seaside-slider > div > :first-child.transition {
   -webkit-transition: -webkit-transform 0.25s ease-in-out;
