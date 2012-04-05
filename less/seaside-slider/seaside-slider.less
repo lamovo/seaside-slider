@@ -1,16 +1,17 @@
 @import url("../prefixed/prefixed.less");
 
 
+body,
+html {
+height: 100%;
+}
+
 .seaside-slider {
 display: inline-block;
-position: relative;	
 	
 	// viewport
 	> div {
-	height: 450px;
 	overflow-x: hidden;
-	overflow-y: auto;
-	position: relative;
 	width: 900px;
 	
 		.js & {
@@ -19,20 +20,16 @@ position: relative;
 	
 		// slides
 		> :first-child {
-		height: 100%;
-		position: absolute;
+		position: relative;
 		width: 100%;
 		
 			// slide		
 			> * {
 			.backface-visibility(hidden); /* prevent flickering on mobile devices */
-			height: 100%;
-			overflow: hidden;
 			text-align: center;
 			width: 100%;
-		
-				* {
-				max-height: 100%;
+			
+				> * {
 				max-width: 100%;
 				}
 				

@@ -4,6 +4,7 @@ return function(element, nSlides, process) {
 
 	var cache = [],
 		processed = [],
+		loaded = [],
 		slideElement = document.createElement('section'),
 		
 		self = {
@@ -15,21 +16,14 @@ return function(element, nSlides, process) {
 				
 				// update index
 				self.index.set(index);
-					
-				// add element for current
-				var slide = cache[self.index.curr] || (cache[self.index.curr] = slideElement.cloneNode(false));
 				
-				// delay for performance on mobile devices
-				setTimeout(function() {
-					
-					for(var i = 0, added = self.index.added; i < added.length; i ++) add(added[i]);
-					for(var i = 0, removed = self.index.removed; i < removed.length; i ++) remove(removed[i]);
-				},
-				25);
-
+				for(var i = 0, added = self.index.added; i < added.length; i ++) add(added[i]);
+				for(var i = 0, removed = self.index.removed; i < removed.length; i ++) remove(removed[i]);
 				
-				Event.fire(self, 'goto', [self.index.curr, slide]);
-
+				Event.fire(self, 'goto', [self.index.curr, cache[self.index.curr]]);
+				
+				checkLoadables(self.index.curr, cache[self.index.curr]);
+				
 				
 				return self;
 			},
@@ -67,7 +61,7 @@ return function(element, nSlides, process) {
 				
 				var fragment = process(index, function(fragment) {
 					
-					// 1. asynchronous via callback
+					// 1. asynchronous
 					slide.appendChild(fragment);
 				});
 				
@@ -98,11 +92,40 @@ return function(element, nSlides, process) {
 					// parentNode for slide is always gonna be the slides container when inserted and undefined when not inserted
 					if(slide && slide.parentNode) element.removeChild(slide);
 					
-					
 					Event.fire(self, 'remove', [index, slide]);
 				}
 			},
 			self.removeSlideDelay);
+		},
+		
+		checkLoadables = function(index) {
+			
+			// previously loaded
+			if(loaded[index]) load(index);
+			else for(var i = 0, loadablesLoaded = 0, loadables = cache[index].querySelectorAll('iframe, img, video'); i < loadables.length; i++)
+				// load already completed
+				if(loadables[i].complete) {
+					
+					loadablesLoaded ++;
+					
+					if(loadablesLoaded === loadables.length) load(index);
+				}
+				// load
+				else Event.add(loadables[i], 'load', function() {
+					
+					Event.remove(this, 'load');
+					
+					loadablesLoaded ++;
+					
+					if(loadablesLoaded === loadables.length) load(index);
+				});
+		},
+		
+		load = function(index) {
+			
+			loaded[index] = true;
+				
+			Event.fire(self, 'load', [index, cache[index]]);
 		};
 
 	

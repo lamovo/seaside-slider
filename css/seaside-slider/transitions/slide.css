@@ -1,13 +1,25 @@
 .seaside-slider > div > :first-child.transition {
-  -webkit-transition: margin-left 0.4s ease-in-out;
-  -moz-transition: margin-left 0.4s ease-in-out;
-  -o-transition: margin-left 0.4s ease-in-out;
-  transition: margin-left 0.4s ease-in-out;
+  -webkit-transition-duration: 0.75s, 0.4s;
+  -moz-transition-duration: 0.75s, 0.4s;
+  -o-transition-duration: 0.75s, 0.4s;
+  transition-duration: 0.75s, 0.4s;
+  -webkit-transition-property: height, margin-left;
+  -moz-transition-property: height, margin-left;
+  -o-transition-property: height, margin-left;
+  transition-property: height, margin-left;
+  -webkit-transition-timing-function: ease-in-out;
+  -moz-transition-timing-function: ease-in-out;
+  -o-transition-timing-function: ease-in-out;
+  transition-timing-function: ease-in-out;
 }
 .touch .seaside-slider > div > :first-child.transition {
-  -webkit-transition: -webkit-transform 0.25s ease-in-out;
-  -moz-transition: -moz-transform 0.25s ease-in-out;
-  -ms-transition: -ms-transform 0.25s ease-in-out;
-  -o-transition: -o-transform 0.25s ease-in-out;
-  transition: transform 0.25s ease-in-out;
+  -webkit-transition-duration: 0.25s, 0.75s;
+  -moz-transition-duration: 0.25s, 0.75s;
+  -o-transition-duration: 0.25s, 0.75s;
+  transition-duration: 0.25s, 0.75s;
+  -webkit-transition-property: -webkit-transform, height;
+  -moz-transition-property: -moz-transform, height;
+  -ms-transition-property: -ms-transform, height;
+  -o-transition-property: -o-transform, height;
+  transition-property: transform, height;
 }

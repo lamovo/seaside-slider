@@ -73,11 +73,18 @@ function(bean, SeasideSlider, SlideSelectors, SiblingSlideSelector, AutoSlide, T
 		slider.carousel.goTo(_.indexOf(slideSelectors.slideSelectors, event.target));
 	});
 	
-	bean.add(slider.carousel, 'goto', function(index) {
+	bean.add(slider.carousel, {
+		goto: function(index) {
 		
-		slideSelectors.setCurrent(index);
-		prevSlideSelector.disabled(index === slider.carousel.index.first);
-		nextSlideSelector.disabled(index === slider.carousel.index.last);
+			slideSelectors.setCurrent(index);
+			prevSlideSelector.disabled(index === slider.carousel.index.first);
+			nextSlideSelector.disabled(index === slider.carousel.index.last);
+		},
+		
+		load: function(index, slide) {
+			
+			slider.carousel.element.style.height = slide.offsetHeight + 'px';
+		},
 	});
 	
 	//bean.add(slider.element, 'focus', autoSlide.stop);

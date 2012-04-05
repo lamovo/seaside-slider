@@ -1,33 +1,30 @@
+body, html {
+  height: 100%;
+}
 .seaside-slider {
   display: inline-block;
-  position: relative;
 }
 .seaside-slider > div {
-  height: 450px;
   overflow-x: hidden;
-  overflow-y: auto;
-  position: relative;
   width: 900px;
 }
 .js .seaside-slider > div {
   overflow-y: hidden;
 }
 .seaside-slider > div > :first-child {
-  height: 100%;
-  position: absolute;
+  position: relative;
   width: 100%;
 }
 .seaside-slider > div > :first-child > * {
   -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  backface-visibility: hidden;
   /* prevent flickering on mobile devices */
 
-  height: 100%;
-  overflow: hidden;
   text-align: center;
   width: 100%;
 }
-.seaside-slider > div > :first-child > * * {
-  max-height: 100%;
+.seaside-slider > div > :first-child > * > * {
   max-width: 100%;
 }
 .js .seaside-slider > div > :first-child > * {

@@ -5,9 +5,14 @@
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   color: #FFFFFF;
+  position: relative;
 }
 .seaside-slider > div > :first-child > * {
   background-color: #000000;
+}
+.seaside-slider > div > :first-child > * img {
+  display: block;
+  margin: 0 auto;
 }
 .seaside-slider.fullscreen {
   display: block;
@@ -36,9 +41,10 @@
 .seaside-slider > nav {
   background-color: #333333;
   display: block;
-  height: 10px;
+  height: 100%;
   text-align: center;
   width: 100%;
+  z-index: 999;
 }
 .seaside-slider > nav .next, .seaside-slider > nav .prev {
   background-color: #FFFFFF;
@@ -50,9 +56,7 @@
   font-size: 20px;
   height: 100%;
   line-height: 1;
-  margin: 0 0 0 0;
-  /* ? */
-
+  margin: 0;
   opacity: 0;
   position: absolute;
   top: 0;
@@ -60,8 +64,7 @@
   -moz-transition: 0.5s;
   -o-transition: 0.5s;
   transition: 0.5s;
-  visibility: hidden;
-  width: 50px;
+  width: 0;
 }
 .seaside-slider > nav .next {
   right: 0;
@@ -101,5 +104,5 @@
 .no-touch .seaside-slider:focus .next:not([disabled]),
 .no-touch .seaside-slider:hover .next:not([disabled]) {
   opacity: 1;
-  visibility: visible;
+  width: 50px;
 }

@@ -13,16 +13,15 @@ require([
 'seaside-slider/seaside-slider',
 'seaside-slider/slide-selectors',
 'seaside-slider/sibling-slide-selector',
-'seaside-slider/transitions/cross-fade',
+'seaside-slider/transitions/slide',
 'seaside-slider/carousel/process/html',
 'classList',
 ],
 function(bean, SeasideSlider, SlideSelectors, SiblingSlideSelector, Transition, process) {
 	
 	var sliderElement = document.querySelector('.seaside-slider'),
-		slides = sliderElement.querySelectorAll('section');
-	
-	var slider = SeasideSlider(sliderElement, {
+		slides = sliderElement.querySelectorAll('section'),
+		slider = SeasideSlider(sliderElement, {
 			process: process({
 				slides: slides,
 			}),
@@ -51,10 +50,17 @@ function(bean, SeasideSlider, SlideSelectors, SiblingSlideSelector, Transition, 
 		slider.carousel.goTo(_.indexOf(slideSelectors.slideSelectors, event.target));
 	});
 	
-	bean.add(slider.carousel, 'goto', function(index) {
+	bean.add(slider.carousel, {
+		goto: function(index, slide) {
+			
+			slideSelectors.setCurrent(index);
+			prevSlideSelector.disabled(index === slider.carousel.index.first);
+			nextSlideSelector.disabled(index === slider.carousel.index.last);
+		},
 		
-		slideSelectors.setCurrent(index);
-		prevSlideSelector.disabled(index === slider.carousel.index.first);
-		nextSlideSelector.disabled(index === slider.carousel.index.last);
+		load: function(index, slide) {
+			
+			slider.carousel.element.style.height = slide.offsetHeight + 'px';
+		},
 	});
 });

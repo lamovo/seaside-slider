@@ -6,9 +6,15 @@ background-color: #000000;
 border: #000000 solid 1px;
 .box-sizing(border-box);
 color: #FFFFFF;
+position: relative;
 	
 	> div > :first-child > * {
 	background-color: #000000;
+				
+		img {
+		display: block;
+		margin: 0 auto;
+		}
 	}
 	
 	&.fullscreen {
@@ -48,9 +54,10 @@ color: #FFFFFF;
 	> nav {
 	background-color: #333333;
 	display: block;
-	height: 10px;
+	height: 100%;
 	text-align: center;
 	width: 100%;
+	z-index: 999;
 		
 		.next,
 		.prev {
@@ -63,13 +70,12 @@ color: #FFFFFF;
 		font-size: 20px;
 		height: 100%;
 		line-height: 1;
-		margin: 0 0 0 0; /* ? */
+		margin: 0;
 		opacity: 0;
 		position: absolute;
 		top: 0;
 		.transition(0.5s);
-		visibility: hidden;
-		width: 50px;
+		width: 0;
 		}
 		
 		.next {
@@ -115,7 +121,7 @@ color: #FFFFFF;
 			
 			&:not([disabled]) {
 			opacity: 1;
-			visibility: visible;
+			width: 50px;
 			}
 		}
 	}
