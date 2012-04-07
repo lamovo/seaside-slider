@@ -14,11 +14,10 @@ require([
 'seaside-slider/slide-selectors',
 'seaside-slider/sibling-slide-selector',
 'seaside-slider/transitions/slide',
-'seaside-slider/transitions/adapt-height',
 'seaside-slider/carousel/process/html',
 'classList',
 ],
-function(bean, SeasideSlider, SlideSelectors, SiblingSlideSelector, Transition, adaptHeight, process) {
+function(bean, SeasideSlider, SlideSelectors, SiblingSlideSelector, Transition, process) {
 	
 	var sliderElement = document.querySelector('.seaside-slider'),
 		slides = sliderElement.querySelectorAll('section'),
@@ -51,6 +50,8 @@ function(bean, SeasideSlider, SlideSelectors, SiblingSlideSelector, Transition, 
 		slider.carousel.goTo(_.indexOf(slideSelectors.slideSelectors, event.target));
 	});
 	
+	var timeout;
+	
 	bean.add(slider.carousel, {
 		goto: function(index, slide, cached) {
 			
@@ -67,7 +68,14 @@ function(bean, SeasideSlider, SlideSelectors, SiblingSlideSelector, Transition, 
 	
 		load: function(index, slide) {
 			
-			slider.carousel.element.style.height = slide.offsetHeight + 'px';
+			clearTimeout(timeout);
+			
+			// timeout for to fix bug, possibly http://stackoverflow.com/q/6655364/278337
+			timeout = setTimeout(function() {
+				
+				slider.carousel.element.style.height = slide.offsetHeight + 'px';
+			},
+			500);
 		},
 	});
 });
