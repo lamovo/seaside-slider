@@ -50,6 +50,8 @@ function(bean, SeasideSlider, SlideSelectors, SiblingSlideSelector, Transition, 
 		slider.carousel.goTo(_.indexOf(slideSelectors.slideSelectors, event.target));
 	});
 	
+	var timeout;
+	
 	bean.add(slider.carousel, {
 		goto: function(index, slide) {
 			
@@ -60,7 +62,14 @@ function(bean, SeasideSlider, SlideSelectors, SiblingSlideSelector, Transition, 
 		
 		load: function(index, slide) {
 			
-			slider.carousel.element.style.height = slide.offsetHeight + 'px';
+			clearTimeout(timeout);
+			
+			// timeout for to fix bug, possibly http://stackoverflow.com/q/6655364/278337
+			timeout = setTimeout(function() {
+				
+				slider.carousel.element.style.height = slide.offsetHeight + 'px';
+			},
+			500);
 		},
 	});
 });

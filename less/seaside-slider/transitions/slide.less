@@ -6,11 +6,15 @@
 
 	> div {
 	
-		> :first-child.transition {
-		.transition-duration(e("0.75s, 0.4s"));
-		.transition-property(e("height, margin-left"));
-		.transition-timing-function(ease-in-out);
-		
+		> :first-child {
+		.transition-duration(0.75s);
+		.transition-property(height);
+			
+			&.transition {
+			.transition-duration(e("0.75s, 0.4s"));
+			.transition-property(e("height, margin-left"));
+			.transition-timing-function(ease-in-out);
+			
 				.touch & {
 				.transition-duration(e("0.25s, 0.75s"));
 				.transition-property-transform(height);
