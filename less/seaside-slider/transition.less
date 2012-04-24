@@ -1,0 +1,58 @@
+@import url("../prefixed/prefixed.less");
+@import url("../prefixed/transition-transform.less");
+
+
+#transition {
+
+	.cross-fade() {
+	
+		> div {
+		
+			> :first-child {
+			
+				> * {
+				opacity: 0;
+				visibility: hidden;
+				
+					&.current {
+					opacity: 1;
+					visibility: visible;
+					z-index: -1; // important for carousel.index.loop = true
+					}
+				}
+				
+				&.transition {
+				.transition-duration(0.75s);
+				.transition-property(height);
+				
+					> * {
+					.transition-duration(0.75s);
+					.transition-property(e("opacity, visibility"));
+					}
+				}
+			}
+		}
+	}
+	
+	.slide() {
+	
+		> div {
+		
+			> :first-child {
+			.transition-duration(0.75s);
+			.transition-property(height);
+				
+				&.transition {
+				.transition-duration(e("0.75s, 0.4s"));
+				.transition-property(e("height, margin-left"));
+				.transition-timing-function(ease-in-out);
+				
+					.touch & {
+					.transition-duration(e("0.25s, 0.75s, 0.75s"));
+					.transition-property-transform(e("height, opacity"));
+					}
+				}
+			}
+		}
+	}
+}

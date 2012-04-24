@@ -4,8 +4,70 @@
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
   color: #FFFFFF;
   position: relative;
+}
+.seaside-slider > div > :first-child {
+  -webkit-transition-duration: 0.75s;
+  -moz-transition-duration: 0.75s;
+  -o-transition-duration: 0.75s;
+  transition-duration: 0.75s;
+  -webkit-transition-duration: 0.75s;
+  -moz-transition-duration: 0.75s;
+  -o-transition-duration: 0.75s;
+  transition-duration: 0.75s;
+  -webkit-transition-property: height;
+  -moz-transition-property: height;
+  -o-transition-property: height;
+  transition-property: height;
+  -webkit-transition-property: height;
+  -moz-transition-property: height;
+  -o-transition-property: height;
+  transition-property: height;
+}
+.seaside-slider > div > :first-child.transition {
+  -webkit-transition-duration: 0.75s, 0.4s;
+  -moz-transition-duration: 0.75s, 0.4s;
+  -o-transition-duration: 0.75s, 0.4s;
+  transition-duration: 0.75s, 0.4s;
+  -webkit-transition-duration: 0.75s, 0.4s;
+  -moz-transition-duration: 0.75s, 0.4s;
+  -o-transition-duration: 0.75s, 0.4s;
+  transition-duration: 0.75s, 0.4s;
+  -webkit-transition-property: height, margin-left;
+  -moz-transition-property: height, margin-left;
+  -o-transition-property: height, margin-left;
+  transition-property: height, margin-left;
+  -webkit-transition-property: height, margin-left;
+  -moz-transition-property: height, margin-left;
+  -o-transition-property: height, margin-left;
+  transition-property: height, margin-left;
+  -webkit-transition-timing-function: ease-in-out;
+  -moz-transition-timing-function: ease-in-out;
+  -o-transition-timing-function: ease-in-out;
+  transition-timing-function: ease-in-out;
+  -webkit-transition-timing-function: ease-in-out;
+  -moz-transition-timing-function: ease-in-out;
+  -o-transition-timing-function: ease-in-out;
+  transition-timing-function: ease-in-out;
+}
+.touch .seaside-slider > div > :first-child.transition {
+  -webkit-transition-duration: 0.25s, 0.75s, 0.75s;
+  -moz-transition-duration: 0.25s, 0.75s, 0.75s;
+  -o-transition-duration: 0.25s, 0.75s, 0.75s;
+  transition-duration: 0.25s, 0.75s, 0.75s;
+  -webkit-transition-duration: 0.25s, 0.75s, 0.75s;
+  -moz-transition-duration: 0.25s, 0.75s, 0.75s;
+  -o-transition-duration: 0.25s, 0.75s, 0.75s;
+  transition-duration: 0.25s, 0.75s, 0.75s;
+  -webkit-transition-property: -webkit-transform, height, opacity;
+  -moz-transition-property: -moz-transform, height, opacity;
+  -ms-transition-property: -ms-transform, height, opacity;
+  -o-transition-property: -o-transform, height, opacity;
+  transition-property: transform, height, opacity;
 }
 .seaside-slider > div > :first-child > * {
   background-color: #000000;
@@ -64,6 +126,10 @@
   -moz-transition: 0.5s;
   -o-transition: 0.5s;
   transition: 0.5s;
+  -webkit-transition: 0.5s;
+  -moz-transition: 0.5s;
+  -o-transition: 0.5s;
+  transition: 0.5s;
   width: 0;
 }
 .seaside-slider > nav .next {
@@ -85,6 +151,10 @@
   display: table-cell;
   height: 100%;
   position: relative;
+  -webkit-transition: background-color 0.25s;
+  -moz-transition: background-color 0.25s;
+  -o-transition: background-color 0.25s;
+  transition: background-color 0.25s;
   -webkit-transition: background-color 0.25s;
   -moz-transition: background-color 0.25s;
   -o-transition: background-color 0.25s;

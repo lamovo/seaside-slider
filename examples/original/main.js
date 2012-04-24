@@ -29,7 +29,7 @@ function(bean, SeasideSlider, SlideSelectors, SiblingSlideSelector, Transition, 
 		}),
 		prevSlideSelector = SiblingSlideSelector(slider.element.querySelector('.prev')),
 		nextSlideSelector = SiblingSlideSelector(slider.element.querySelector('.next')),
-		slideSelectors = SlideSelectors(slider.element.querySelector('nav ul'), slider.carousel.index.span);
+		slideSelectors = SlideSelectors(slider.element.querySelector('nav'), slider.carousel.index.span);
 	
 	// choose a transition
 	Transition(slider.carousel);

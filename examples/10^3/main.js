@@ -46,7 +46,7 @@ function(bean, SeasideSlider, SlideSelectors, SiblingSlideSelector, AutoSlide, T
 		}),
 		prevSlideSelector = SiblingSlideSelector(slider.element.querySelector('.prev')),
 		nextSlideSelector = SiblingSlideSelector(slider.element.querySelector('.next')),
-		slideSelectors = SlideSelectors(slider.element.querySelector('nav ul'), slider.carousel.index.span),
+		slideSelectors = SlideSelectors(slider.element.querySelector('nav'), slider.carousel.index.span),
 		autoSlide = AutoSlide(function() {
 					
 			slider.carousel.goTo(slider.carousel.index.next);

@@ -1,4 +1,4 @@
-define(['string-to-fragment', 'text!templates/seaside-slider/slide-selector.html', 'mote', 'underscore'], function(stringToFragment, template) {
+define(['string-to-fragment', 'text!templates/seaside-slider/slide-selectors.html', 'mote', 'underscore'], function(stringToFragment, template) {
 
 return function(element, slideSelectors) {
 	
@@ -9,11 +9,16 @@ return function(element, slideSelectors) {
 		
 			create: function(amount) {
 				
-				for(var i = 0, result = ''; i < amount; i++) result += mote.compile(template)({index: i});
-
-				element.appendChild(stringToFragment(result));
+				for(var i = 0, slideSelectors = []; i < amount; i++) slideSelectors.push({index: i});
 				
-				return element.children;
+				var fragment = stringToFragment(mote.compile(template)({slideSelectors: slideSelectors}));
+				
+				slideSelectors = fragment.querySelectorAll('li');
+				
+				element.appendChild(fragment);
+				
+
+				return slideSelectors;
 			},
 			
 			setCurrent: function(index) {
