@@ -8,24 +8,34 @@ return function(carousel) {
 			transformPropertyName:		Modernizr && Modernizr.prefixed('transform'),
 		},
 		
-		slideSpan = carousel.element.offsetWidth + self.gutter,
 		// get the right property and value, used to move a slide
 		property = self.transform ? self.transformPropertyName : 'marginLeft',
 		valuePrefix = self.transform ? 'translateX(' : '';
 		valueSuffix = self.transform ? 'px)' : 'px';
 	
-	
-	Event.add(carousel, 'goto', function(index) {
-		
+	function positionSlide(index, slide) {
+
+		var slideSpan = carousel.element.offsetWidth + self.gutter;
+
+		slide.style.left = index * slideSpan + 'px';
+	}
+
+	function positionViewport(index) {
+
+		var slideSpan = carousel.element.offsetWidth + self.gutter;
+
 		// move slide along x-axis
 		carousel.element.style[property] = valuePrefix + (- index * slideSpan) + valueSuffix;
+	}
+
+	Event.add(carousel, 'goto', positionViewport);
+	Event.add(carousel, 'add', positionSlide);
+	Event.add(window, 'resize', function() {
+
+		for(var i = 0; i < carousel.index.active.length; i++) positionSlide(carousel.index.active[i], carousel.cache[carousel.index.active[i]]);
+
+		carousel.goTo(carousel.index.curr);
 	});
-	
-	Event.add(carousel, 'add', function(index, slide) {
-		
-		slide.style.left = index * slideSpan + 'px';
-	});
-	
 	
 	return self;
 };

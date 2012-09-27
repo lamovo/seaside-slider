@@ -1,10 +1,14 @@
-define(['underscore'], function() {
+!function(factory) {
+	
+	if(typeof define === 'function' && define.amd) define(factory);
+	else Index = factory();
+}
+(function() {
 
 return function(last, first) {
-
-	var	prevCurr,
 	
-		self = {
+	var	self = {
+			version: '1.0.7',
 			loop: false,
 			removed: [],
 			added: [],
@@ -12,42 +16,31 @@ return function(last, first) {
 			first: first || 0,
 			last: last,
 			span: last - (first || 0) + 1,
-			
 			back: [],
 			
 			set: function(index) {
 				
-				if(self.loop) {
-					
-					if(index > self.last) index = self.first;
-					else if(index < self.first) index = self.last;
-				}
-				else {
-				
-					// clip index
-					index = Math.max(index, self.first);
-					index = Math.min(index, self.last);
-				}
-				
-				// set indices
-				self.prev = index - 1;
-				self.curr = index;
-				self.next = index + 1;
+				self.curr = clip(index);
 				
 				// set active indices
 				var active = [self.curr];
-				self.prev < self.first || active.unshift(self.prev);
-				self.next > self.last || active.push(self.next);
+				(self.prev = self.curr - 1) < self.first || active.unshift(self.prev);
+				(self.next = self.curr + 1) > self.last || active.push(self.next);
+				
+				self.prev = clip(self.prev);
+				self.next = clip(self.next);
+				
 				
 				// save to self
-				self.removed = _.difference(self.active, active),
-				self.added = _.difference(active, self.active);
+				if(typeof _ === 'function') { // features only available with Underscore
+				
+					self.removed = _.difference(self.active, active),
+					self.added = _.difference(active, self.active);
+				}
 				self.active = active;
 				
 				// direction
-				if(prevCurr) self.direction = self.curr > prevCurr ? 1 : -1;
-				prevCurr = self.curr;
-				
+				if(self.back[0]) self.direction = self.curr > self.back[0].prev ? 1 : -1;
 				
 				// keep a history of past indices
 				self.back.unshift({
@@ -58,6 +51,17 @@ return function(last, first) {
 				
 				return self;
 			},
+		},
+		
+		clip = function(index) {
+			
+			if(self.loop) {
+				
+				if(index > self.last) return self.first;
+				else if(index < self.first) return self.last;
+				else return index;
+			}
+			else return Math.min(Math.max(index, self.first), self.last);
 		};
 		
 	

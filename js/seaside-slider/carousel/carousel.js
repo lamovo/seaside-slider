@@ -2,12 +2,12 @@ define(['bean', 'seaside-slider/index', 'underscore'], function(Event, Index) {
 
 return function(element, nSlides, process) {
 
-	var cache = [],
-		processed = [],
+	var processed = [],
 		loaded = [],
 		slideElement = document.createElement('section'),
 		
 		self = {
+			cache: [],
 			index: Index(nSlides - 1),
 			element: element,
 			removeSlideDelay: 1000,
@@ -20,9 +20,9 @@ return function(element, nSlides, process) {
 				for(var i = 0, added = self.index.added; i < added.length; i ++) add(added[i]);
 				for(var i = 0, removed = self.index.removed; i < removed.length; i ++) remove(removed[i]);
 				
-				Event.fire(self, 'goto', [self.index.curr, cache[self.index.curr]]);
+				Event.fire(self, 'goto', [self.index.curr, self.cache[self.index.curr]]);
 				
-				checkLoadables(self.index.curr, cache[self.index.curr]);
+				checkLoadables(self.index.curr, self.cache[self.index.curr]);
 				
 				
 				return self;
@@ -44,8 +44,8 @@ return function(element, nSlides, process) {
 			
 			markCurrentSlide: function() {
 				
-				if(self.index.back[1]) cache[self.index.back[1].curr].classList.remove('current');
-				cache[self.index.curr].classList.add('current');
+				if(self.index.back[1]) self.cache[self.index.back[1].curr].classList.remove('current');
+				self.cache[self.index.curr].classList.add('current');
 				
 				return self;
 			},
@@ -54,7 +54,7 @@ return function(element, nSlides, process) {
 		add = function(index) {
 
 			// load from cache or save to cache
-			var slide = cache[index] || (cache[index] = slideElement.cloneNode(false));
+			var slide = self.cache[index] || (self.cache[index] = slideElement.cloneNode(false));
 			
 			
 			if(!processed[index]) {
@@ -86,7 +86,7 @@ return function(element, nSlides, process) {
 				// make sure that after the timeout, the index to be removed is not one of the active indices
 				if(_.indexOf(self.index.active, index) === -1) {
 					
-					var slide = cache[index];
+					var slide = self.cache[index];
 					
 					// sometimes, the carousel goes very fast and there is no node to be removed
 					// parentNode for slide is always gonna be the slides container when inserted and undefined when not inserted
@@ -102,7 +102,7 @@ return function(element, nSlides, process) {
 			
 			// previously loaded
 			if(loaded[index]) load(index);
-			else for(var i = 0, loadablesLoaded = 0, loadables = cache[index].querySelectorAll('iframe, img, video'); i < loadables.length; i++)
+			else for(var i = 0, loadablesLoaded = 0, loadables = self.cache[index].querySelectorAll('iframe, img, video'); i < loadables.length; i++)
 				// load already completed
 				if(loadables[i].complete) {
 					
@@ -125,7 +125,7 @@ return function(element, nSlides, process) {
 			
 			loaded[index] = true;
 				
-			Event.fire(self, 'load', [index, cache[index]]);
+			Event.fire(self, 'load', [index, self.cache[index]]);
 		};
 
 	
